@@ -1,19 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { v4 } from 'uuid'
+import Article from './Article'
 import getNews from '../service/api'
-const Articles = () => {
 
+const Articles = () => {
+    const [news, setNews] = useState([])
     useEffect(()=>{
         dailyNews()
     },[])
 
     const dailyNews = async () => {
         let response = await getNews()
-        console.log(response)
+        // console.log(response)
+        setNews(response.data)
     }
 
     return (
         <div>
-        asdf
+            {
+                news.map((data) => {
+                    return(
+                        <Article key={v4()} data={data}/>
+                    )
+                })
+            }
         </div>
     )
 }

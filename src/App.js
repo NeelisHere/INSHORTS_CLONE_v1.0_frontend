@@ -13,13 +13,13 @@ const Container = styled(Box)`
 
 function App() {
   return (
-    <Box>
+    <div className='parent-screen'>
       <Header />
       <Container>
         <InfoHeader />
         <Articles />
       </Container>
-    </Box>
+    </div>
   );
 }
 
